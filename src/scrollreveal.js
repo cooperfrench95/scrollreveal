@@ -650,9 +650,16 @@
         !elem.revealing &&
         !elem.disabled
     }
-    return _isElemVisible(elem) &&
-      !elem.revealing &&
-      !elem.disabled
+    try {
+      var returnIsVisible = _isElemVisible(elem) &&
+        !elem.revealing &&
+        !elem.disabled
+      return returnIsVisible
+    }
+    catch (e) {
+      console.warn(e)
+      return true
+    }
   }
 
   function _shouldUseDelay (elem) {
